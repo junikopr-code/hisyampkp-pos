@@ -85,7 +85,7 @@ function exportCSV(){let m=$('#reportmonth').value,list=txs.filter(t=>t.date.sli
 let cameraStream=null;
 async function startCamera(){let area=$('#cameraarea');if(cameraStream){cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null;area.innerHTML='';return}if(!navigator.mediaDevices?.getUserMedia){toast('Kamera tidak didukung browser ini');return}try{cameraStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});area.innerHTML='<video id="camvideo" autoplay playsinline style="width:100%;max-height:220px;margin-top:8px;border-radius:10px"></video><div class="tiny muted">Arahkan barcode ke kamera. Jika tidak terbaca, gunakan scanner fisik atau input barcode.</div><button class="small secondary" id="stopcam">Matikan kamera</button>';$('#camvideo').srcObject=cameraStream;$('#stopcam').onclick=()=>{cameraStream.getTracks().forEach(t=>t.stop());cameraStream=null;area.innerHTML='';toast('Kamera dimatikan')};toast('Kamera aktif, tetapi pembacaan barcode otomatis memerlukan library decoder.')}catch(e){toast('Tidak dapat mengakses kamera. Periksa izin browser dan gunakan HTTPS/localhost.')}}
 render();
-</script>const SUPABASE_URL = 'https://smeymihgbpbqvdpzmqyl.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://smeymihgbpbqvdpzmqyl.supabase.co/rest/v1/';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNtZXltaWhnYnBicXZkcHptcXlsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3Mzk3OTQsImV4cCI6MjEwNzMxNTc5NH0.yAXvQQiQ00g0Kc8wZ7lyj8DMqf8efgnU3CS03PuDLbwI';
 const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 </script>
